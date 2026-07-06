@@ -18,14 +18,14 @@ export default function PresentationPage() {
       
       {/* 
         CRITICAL PRINT STYLES FOR UNSTOP COMPETITION SUBMISSION:
-        1. Forces Landscape orientation and 0mm margin automatically!
+        1. Forces exact 16:9 Widescreen dimensions (16in x 9in) so it never saves as square or Letter!
         2. -webkit-print-color-adjust: exact! Forces browser to print deep black backgrounds and vibrant gradients without stripping colors!
-        3. Locks each slide to exactly 1 page (100vw x 100vh) with page-break-after: always!
+        3. Locks each slide to exactly 1 page with page-break-after: always!
       */}
       <style jsx global>{`
         @media print {
           @page {
-            size: landscape !important;
+            size: 16in 9in !important;
             margin: 0mm !important;
           }
           * {
@@ -54,11 +54,11 @@ export default function PresentationPage() {
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-height: 100vh !important;
-            min-height: 100vh !important;
-            padding: 2.5rem 3.5rem !important;
+            width: 16in !important;
+            height: 9in !important;
+            max-height: 9in !important;
+            min-height: 9in !important;
+            padding: 0.6in 0.8in !important;
             margin: 0 !important;
             page-break-after: always !important;
             break-after: page !important;
@@ -117,7 +117,7 @@ export default function PresentationPage() {
             className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500 text-white font-display text-xs font-extrabold uppercase tracking-widest shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
           >
             <Printer className="h-4 w-4 animate-bounce" />
-            <span>🖨️ SAVE AS 6-PAGE PDF (LANDSCAPE)</span>
+            <span>🖨️ SAVE AS 16:9 PDF (WIDESCREEN)</span>
           </button>
         </div>
       </header>
@@ -136,7 +136,7 @@ export default function PresentationPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-aether-cyan/10 via-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 rounded-full bg-aether-cyan animate-pulse" />
               <span className="font-mono text-sm font-extrabold uppercase tracking-widest text-zinc-300">
@@ -147,7 +147,7 @@ export default function PresentationPage() {
           </div>
 
           {/* Centerstage Hero */}
-          <div className="relative z-10 my-auto space-y-6 text-center max-w-4xl mx-auto py-4">
+          <div className="relative z-10 my-auto space-y-4 text-center max-w-4xl mx-auto py-2">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-pink-400 font-bold uppercase tracking-widest">
               <Sparkles className="h-3.5 w-3.5" />
               <span>AUTONOMOUS SPATIAL INTELLIGENCE // VER 4.2 PRO</span>
@@ -158,35 +158,67 @@ export default function PresentationPage() {
               <span className="bg-gradient-to-r from-[#a855f7] via-[#ec4899] to-[#f59e0b] bg-clip-text text-transparent">OS</span>
             </h1>
 
-            <p className="text-xl md:text-2xl font-body font-light text-zinc-300 leading-relaxed">
+            <p className="text-lg md:text-xl font-body font-light text-zinc-300 leading-relaxed">
               Intelligence. <span className="text-aether-cyan font-normal font-mono">Spatialized.</span> Zero-latency neural cluster orchestration and real-time enterprise telemetry.
             </p>
           </div>
 
-          {/* Bottom Founder Spotlight Card */}
-          <div className="relative z-10 w-full max-w-3xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500">
-              <div className="rounded-[15px] bg-[#010103] px-8 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-aether-cyan via-purple-600 to-pink-600 flex items-center justify-center shadow-inner">
-                    <Sparkles className="h-6 w-6 text-white animate-pulse" />
+          {/* Bottom Founder & Explicit PROTOTYPE LINKS Banner (Judges can click or read easily!) */}
+          <div className="relative z-10 w-full max-w-4xl mx-auto space-y-3">
+            
+            {/* EXPLICIT CLICKABLE VERCEL & GITHUB PROTOTYPE BOX */}
+            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-aether-cyan/15 via-purple-500/15 to-pink-500/15 border border-aether-cyan/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-aether-cyan/20 text-aether-cyan flex items-center justify-center">
+                  <Globe className="h-5 w-5 animate-pulse" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider">🌐 LIVE VERCEL PROTOTYPE (JUDGES CLICK HERE)</div>
+                  <a href="https://aether-os-ruby.vercel.app/" target="_blank" rel="noreferrer" className="text-sm md:text-base font-mono font-extrabold text-aether-cyan hover:underline break-all">
+                    https://aether-os-ruby.vercel.app
+                  </a>
+                </div>
+              </div>
+
+              <div className="h-8 w-[1px] bg-white/10 hidden sm:block" />
+
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                  <Terminal className="h-5 w-5" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider">💻 GITHUB REPOSITORY</div>
+                  <a href="https://github.com/Abhi666-max/AetherOS" target="_blank" rel="noreferrer" className="text-sm md:text-base font-mono font-extrabold text-purple-400 hover:underline break-all">
+                    https://github.com/Abhi666-max/AetherOS
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Founder Credit Card */}
+            <div className="relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500">
+              <div className="rounded-[11px] bg-[#010103] px-6 py-3 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-aether-cyan via-purple-600 to-pink-600 flex items-center justify-center shadow-inner">
+                    <Sparkles className="h-5 w-5 text-white animate-pulse" />
                   </div>
                   <div className="text-left">
                     <div className="flex items-center gap-2">
-                      <span className="font-display text-lg font-extrabold text-white">Abhijeet Kangane</span>
+                      <span className="font-display text-base font-extrabold text-white">Abhijeet Kangane</span>
                       <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-[10px] font-mono font-extrabold text-emerald-400 uppercase">
                         FOUNDER
                       </span>
                     </div>
-                    <div className="font-mono text-xs text-zinc-400">Lead UI/UX Architect // AetherOS Enterprise</div>
+                    <div className="font-mono text-[11px] text-zinc-400">Lead UI/UX Architect // AetherOS Enterprise</div>
                   </div>
                 </div>
                 <div className="text-right font-mono text-xs text-zinc-400 hidden sm:block">
-                  <div>GitHub: github.com/Abhi666-max</div>
-                  <div className="text-aether-cyan">Live Vercel Edge Prototype</div>
+                  <div className="text-pink-400 font-bold">Unstop Frontend Battle 2026</div>
+                  <div className="text-aether-cyan">Techverse Solutions Challenge</div>
                 </div>
               </div>
             </div>
+
           </div>
         </section>
 
@@ -196,7 +228,7 @@ export default function PresentationPage() {
             currentSlide !== 1 ? "hidden print:flex" : "flex"
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="space-y-1">
               <span className="font-mono text-xs text-pink-400 font-extrabold uppercase tracking-widest">// SECTION 01 // PROBLEM STATEMENT</span>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">The Chokepoints of Legacy Cloud Infrastructure</h2>
@@ -205,7 +237,7 @@ export default function PresentationPage() {
           </div>
 
           {/* 4 Cards Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 my-auto pt-4">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5 my-auto pt-3">
             <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-red-500" />
               <div className="flex items-center gap-3">
@@ -251,7 +283,7 @@ export default function PresentationPage() {
             </div>
           </div>
 
-          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-4">
+          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-3">
             <span>AETHEROS ENTERPRISE RESEARCH</span>
             <span>TARGET AUDIENCE: SREs, DEVOPS & CLOUD ARCHITECTS</span>
           </div>
@@ -263,7 +295,7 @@ export default function PresentationPage() {
             currentSlide !== 2 ? "hidden print:flex" : "flex"
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="space-y-1">
               <span className="font-mono text-xs text-aether-cyan font-extrabold uppercase tracking-widest">// SECTION 02 // PROPOSED SOLUTION</span>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">AetherOS — Autonomous Spatial Command Grid</h2>
@@ -272,11 +304,11 @@ export default function PresentationPage() {
           </div>
 
           {/* Solution Modules Grid + Live UI Mockup */}
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto pt-4 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto pt-3 items-center">
             
             {/* Left 7 Cols: Key Architectural Innovations */}
             <div className="lg:col-span-7 space-y-3">
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3.5">
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3">
                 <div className="p-2 rounded-lg bg-aether-cyan/10 text-aether-cyan mt-0.5"><Zap className="h-4 w-4" /></div>
                 <div>
                   <h4 className="text-sm font-display font-bold text-white">0.000ms Hardware GPU Rendering</h4>
@@ -284,7 +316,7 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3.5">
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3">
                 <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400 mt-0.5"><Terminal className="h-4 w-4" /></div>
                 <div>
                   <h4 className="text-sm font-display font-bold text-white">Natural Language Spatial Intent Bar</h4>
@@ -292,7 +324,7 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3.5">
+              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3">
                 <div className="p-2 rounded-lg bg-pink-500/10 text-pink-400 mt-0.5"><Network className="h-4 w-4" /></div>
                 <div>
                   <h4 className="text-sm font-display font-bold text-white">Interactive Global Topology Mesh</h4>
@@ -304,8 +336,8 @@ export default function PresentationPage() {
             {/* Right 5 Cols: Live UI System Representation */}
             <div className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-aether-cyan via-purple-500 to-pink-500 shadow-2xl">
-                <div className="rounded-[15px] bg-[#010103] p-5 space-y-3.5">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <div className="rounded-[15px] bg-[#010103] p-5 space-y-3">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-2">
                     <span className="text-[11px] font-mono font-bold text-aether-cyan flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-aether-cyan animate-ping" />
                       <span>LIVE TELEMETRY FEED</span>
@@ -339,7 +371,7 @@ export default function PresentationPage() {
 
           </div>
 
-          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-4">
+          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-3">
             <span>SILICON VALLEY DESIGN EXCELLENCE</span>
             <span>ZERO CHEAP GLOW POLICY // 1PX TRAVELING BORDERS</span>
           </div>
@@ -351,7 +383,7 @@ export default function PresentationPage() {
             currentSlide !== 3 ? "hidden print:flex" : "flex"
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="space-y-1">
               <span className="font-mono text-xs text-purple-400 font-extrabold uppercase tracking-widest">// SECTION 03 // TECH STACK & ARCHITECTURE</span>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">Built for Ultra-High Performance & Luxury Finish</h2>
@@ -360,7 +392,7 @@ export default function PresentationPage() {
           </div>
 
           {/* 4 Tech Pillars */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 my-auto pt-4">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5 my-auto pt-3">
             <div className="p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-aether-cyan font-bold uppercase">CORE ENGINE</span>
@@ -406,7 +438,7 @@ export default function PresentationPage() {
             </div>
           </div>
 
-          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-4">
+          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-3">
             <span>100% CLEAN COMPILE IN 14.6 SECONDS</span>
             <span>ZERO TYPESCRIPT ERRORS OR BUILD WARNINGS</span>
           </div>
@@ -418,7 +450,7 @@ export default function PresentationPage() {
             currentSlide !== 4 ? "hidden print:flex" : "flex"
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="space-y-1">
               <span className="font-mono text-xs text-emerald-400 font-extrabold uppercase tracking-widest">// SECTION 04 // EXPECTED IMPACT & ROI</span>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">Quantifiable Business Value & Enterprise Scaling</h2>
@@ -427,7 +459,7 @@ export default function PresentationPage() {
           </div>
 
           {/* Bloomberg / Palantir Tier Big Metrics Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 my-auto pt-6">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 my-auto pt-4">
             <div className="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 via-purple-500/5 to-transparent border border-pink-500/30 space-y-2 relative overflow-hidden">
               <span className="font-mono text-xs text-zinc-400 uppercase font-bold block">30D COMPUTE SAVINGS</span>
               <div className="text-4xl lg:text-5xl font-mono font-extrabold text-white tracking-tight">$45.0B</div>
@@ -450,7 +482,7 @@ export default function PresentationPage() {
             </div>
           </div>
 
-          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-4">
+          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-3">
             <span>TARGET USERS: ENTERPRISE CFOs, CLOUD ARCHITECTS & AI ENGINEERS</span>
             <span>BLOOMBERG / PALANTIR TIER TELEMETRY</span>
           </div>
@@ -462,7 +494,7 @@ export default function PresentationPage() {
             currentSlide !== 5 ? "hidden print:flex" : "flex"
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="space-y-1">
               <span className="font-mono text-xs text-amber-400 font-extrabold uppercase tracking-widest">// SECTION 05 // FUTURE SCOPE & ROADMAP</span>
               <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">The Next Decade of Spatial Cloud Computing</h2>
@@ -471,49 +503,61 @@ export default function PresentationPage() {
           </div>
 
           {/* 4 Future Milestones */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 my-auto pt-4">
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2 flex items-start gap-4">
-              <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 font-mono font-bold mt-0.5 text-xs">Q3 2026</div>
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5 my-auto pt-3">
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5 flex items-start gap-3.5">
+              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 font-mono font-bold mt-0.5 text-xs">Q3 2026</div>
               <div>
                 <h3 className="text-base font-display font-bold text-white">Quantum-Silicon Hardware Integration</h3>
-                <p className="text-xs font-body text-zinc-400 mt-1 leading-relaxed font-light">
+                <p className="text-xs font-body text-zinc-400 mt-0.5 leading-relaxed font-light">
                   Direct API hookups into quantum computing processors and optical neural networks for sub-0.01ms instantaneous cluster routing and data processing.
                 </p>
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2 flex items-start gap-4">
-              <div className="p-2.5 rounded-xl bg-aether-cyan/10 text-aether-cyan font-mono font-bold mt-0.5 text-xs">Q4 2026</div>
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5 flex items-start gap-3.5">
+              <div className="p-2 rounded-xl bg-aether-cyan/10 text-aether-cyan font-mono font-bold mt-0.5 text-xs">Q4 2026</div>
               <div>
                 <h3 className="text-base font-display font-bold text-white">Autonomous Multi-Cloud Failover</h3>
-                <p className="text-xs font-body text-zinc-400 mt-1 leading-relaxed font-light">
+                <p className="text-xs font-body text-zinc-400 mt-0.5 leading-relaxed font-light">
                   Cross-platform swarm synchronization that seamlessly migrates live AI workloads between AWS, GCP, and Azure during regional grid blackouts.
                 </p>
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2 flex items-start gap-4">
-              <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 font-mono font-bold mt-0.5 text-xs">Q1 2027</div>
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5 flex items-start gap-3.5">
+              <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 font-mono font-bold mt-0.5 text-xs">Q1 2027</div>
               <div>
                 <h3 className="text-base font-display font-bold text-white">LLM-V5 Native Weight Synthesis</h3>
-                <p className="text-xs font-body text-zinc-400 mt-1 leading-relaxed font-light">
+                <p className="text-xs font-body text-zinc-400 mt-0.5 leading-relaxed font-light">
                   On-the-fly autonomous model pruning and parameter weight distribution across decentralized edge devices and orbital LEO satellites.
                 </p>
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2 flex items-start gap-4">
-              <div className="p-2.5 rounded-xl bg-pink-500/10 text-pink-400 font-mono font-bold mt-0.5 text-xs">Q2 2027</div>
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5 flex items-start gap-3.5">
+              <div className="p-2 rounded-xl bg-pink-500/10 text-pink-400 font-mono font-bold mt-0.5 text-xs">Q2 2027</div>
               <div>
                 <h3 className="text-base font-display font-bold text-white">3D Spatial Grid (Vision Pro / Quest)</h3>
-                <p className="text-xs font-body text-zinc-400 mt-1 leading-relaxed font-light">
+                <p className="text-xs font-body text-zinc-400 mt-0.5 leading-relaxed font-light">
                   Expanding the 2D web interface into an immersive 3D spatial computing environment where engineers manipulate neural data nodes with hand gestures.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-4">
+          {/* EXPLICIT SUBMISSION PROTOTYPE LINKS AT THE BOTTOM OF SLIDE 6 */}
+          <div className="relative z-10 p-3 rounded-xl bg-gradient-to-r from-aether-cyan/10 via-purple-500/10 to-pink-500/10 border border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Globe className="h-4 w-4 text-aether-cyan animate-pulse" />
+              <span className="font-mono text-xs font-extrabold text-white">Live Vercel: <a href="https://aether-os-ruby.vercel.app/" target="_blank" rel="noreferrer" className="text-aether-cyan hover:underline">https://aether-os-ruby.vercel.app</a></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Terminal className="h-4 w-4 text-purple-400" />
+              <span className="font-mono text-xs font-extrabold text-white">GitHub Repo: <a href="https://github.com/Abhi666-max/AetherOS" target="_blank" rel="noreferrer" className="text-purple-400 hover:underline">github.com/Abhi666-max/AetherOS</a></span>
+            </div>
+          </div>
+
+          <div className="relative z-10 flex justify-between items-center text-xs font-mono text-zinc-500 border-t border-white/10 pt-3">
             <span>AETHEROS ENTERPRISE ROADMAP</span>
             <span>THANK YOU // READY FOR SUBMISSION</span>
           </div>

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Terminal, Network, Cpu, BarChart3, ArrowRight, Sparkles, Orbit } from "lucide-react";
-import Link from "next/link";
 
 interface HeaderProps {
   currentView: "landing" | "dashboard";
@@ -22,7 +21,7 @@ export default function Header({ currentView, setCurrentView, activeTab, setActi
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#010103]/80 backdrop-blur-2xl transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-8">
-        
+
         {/* Left: Brand Logo & Title */}
         <div
           onClick={() => setCurrentView("landing")}
@@ -58,11 +57,10 @@ export default function Header({ currentView, setCurrentView, activeTab, setActi
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   data-clickable="true"
-                  className={`relative flex items-center gap-2 rounded-full px-5 py-2 font-heading text-xs font-bold transition-all duration-300 ${
-                    isActive
+                  className={`relative flex items-center gap-2 rounded-full px-5 py-2 font-heading text-xs font-bold transition-all duration-300 ${isActive
                       ? "text-white shadow-[0_0_20px_rgba(6,182,212,0.4)]"
                       : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <span className="absolute inset-0 rounded-full bg-gradient-to-r from-aether-cyan/30 via-purple-500/30 to-pink-500/30 border border-aether-cyan/50 -z-10" />
@@ -75,21 +73,8 @@ export default function Header({ currentView, setCurrentView, activeTab, setActi
           </nav>
         )}
 
-        {/* Right: Action Buttons & Competition Presentation Deck Link */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          
-          {/* Competition 6-Slide Widescreen Presentation Link */}
-          <Link
-            href="/presentation"
-            data-clickable="true"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500/15 via-purple-500/15 to-aether-cyan/15 hover:from-pink-500/30 hover:to-aether-cyan/30 border border-pink-500/40 text-xs font-mono font-extrabold text-white transition-all shadow-[0_0_15px_rgba(236,72,153,0.25)] hover:scale-105 active:scale-95"
-            title="View 6-Slide Competition Presentation Deck"
-          >
-            <BarChart3 className="h-3.5 w-3.5 text-pink-400 animate-pulse" />
-            <span className="hidden sm:inline">📊 VIEW 6-SLIDE DECK (PDF)</span>
-            <span className="sm:hidden">📊 DECK</span>
-          </Link>
-
+        {/* Right: Action Buttons */}
+        <div className="flex items-center gap-4">
           {currentView === "landing" ? (
             /* UPGRADED TOP-RIGHT HEADER BUTTON WITH CONTINUOUS CLOCKWISE MOVING BORDER BEAM */
             <div
@@ -98,18 +83,18 @@ export default function Header({ currentView, setCurrentView, activeTab, setActi
               className="relative overflow-hidden rounded-full p-[2px] shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:shadow-[0_0_50px_rgba(168,85,247,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
             >
               <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent animate-rotate-beam-fast pointer-events-none" />
-              
-              <button className="relative z-10 px-5 sm:px-7 py-2.5 rounded-full bg-[#010103] flex items-center gap-2 font-heading text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-xl">
+
+              <button className="relative z-10 px-7 py-2.5 rounded-full bg-[#010103] flex items-center gap-2.5 font-heading text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-xl">
                 <Sparkles className="h-3.5 w-3.5 text-aether-cyan animate-spin" style={{ animationDuration: "8s" }} />
                 <span className="bg-gradient-to-r from-white via-aether-cyan to-white bg-clip-text text-transparent">
-                  Enter Grid
+                  Enter Dashboard Grid
                 </span>
                 <ArrowRight className="h-3.5 w-3.5 text-purple-400 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <span className="hidden lg:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-400 font-bold">
+              <span className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-400 font-bold">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
                 <span>GRID ONLINE</span>
               </span>
@@ -137,9 +122,8 @@ export default function Header({ currentView, setCurrentView, activeTab, setActi
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 data-clickable="true"
-                className={`flex flex-col items-center gap-1 py-1 px-3 rounded-lg text-[10px] font-heading font-bold transition-all ${
-                  isActive ? "text-aether-cyan bg-white/[0.05]" : "text-zinc-400"
-                }`}
+                className={`flex flex-col items-center gap-1 py-1 px-3 rounded-lg text-[10px] font-heading font-bold transition-all ${isActive ? "text-aether-cyan bg-white/[0.05]" : "text-zinc-400"
+                  }`}
               >
                 <Icon className="h-4 w-4" />
                 <span>{tab.label}</span>
