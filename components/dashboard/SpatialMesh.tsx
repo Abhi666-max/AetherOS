@@ -34,7 +34,7 @@ export default function SpatialMesh() {
       {/* 1. Module Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/40 text-[11px] font-mono font-extrabold text-purple-400 uppercase tracking-wider shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/40 text-[11px] font-mono font-extrabold text-purple-400 uppercase tracking-wider">
             <Network className="h-3.5 w-3.5 animate-pulse" />
             <span>MODULE 02 // SPATIAL TOPOLOGY MESH</span>
           </div>
@@ -46,214 +46,194 @@ export default function SpatialMesh() {
           </p>
         </div>
 
-        {/* UPGRADED SCI-FI TACTICAL SURGE BUTTON */}
-        <div className="relative overflow-hidden rounded-2xl p-[2px] shadow-[0_0_30px_rgba(168,85,247,0.8)] hover:shadow-[0_0_50px_rgba(6,182,212,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 group/btn cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan to-transparent animate-rotate-beam-fast pointer-events-none" />
-          
-          <button
-            onClick={handleSurge}
-            disabled={isSurging}
-            data-clickable="true"
-            className="relative z-10 px-7 py-4 rounded-[14px] bg-[#010103] group-hover/btn:bg-[#080816] transition-colors flex items-center gap-3 text-white font-display text-xs font-extrabold tracking-widest uppercase backdrop-blur-xl"
-          >
-            <RefreshCw className={`h-4 w-4 text-aether-cyan ${isSurging ? "animate-spin" : ""}`} />
-            <span className="bg-gradient-to-r from-white via-purple-300 to-white bg-clip-text text-transparent">
-              {isSurging ? "TRANSMITTING SURGE..." : "SIMULATE QUANTUM SURGE ⚡"}
-            </span>
-          </button>
-        </div>
+        {/* SCI-FI TACTICAL SURGE BUTTON (Clean minimal, no cheap glow box) */}
+        <button
+          onClick={handleSurge}
+          disabled={isSurging}
+          data-clickable="true"
+          className="px-7 py-4 rounded-[14px] bg-gradient-to-r from-purple-600 via-aether-cyan to-pink-600 hover:opacity-95 transition-all flex items-center gap-3 text-white font-display text-xs font-extrabold tracking-widest uppercase shadow-md"
+        >
+          <RefreshCw className={`h-4 w-4 text-white ${isSurging ? "animate-spin" : ""}`} />
+          <span>{isSurging ? "TRANSMITTING SURGE..." : "SIMULATE QUANTUM SURGE ⚡"}</span>
+        </button>
       </div>
 
       {/* 2. Interactive SVG Map & Telemetry Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* Col 1 & 2: SVG Interactive Node Topology Map (Reverted card hover to clean scale-105) */}
-        <div className="lg:col-span-2 relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_70px_rgba(168,85,247,0.8)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan via-pink-500 to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
-          
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 overflow-hidden min-h-[460px] flex flex-col justify-between h-full backdrop-blur-2xl">
-            <div className="absolute top-4 left-6 z-10 flex items-center gap-3 text-xs font-mono text-zinc-400 bg-[#05050a]/90 px-4 py-2 rounded-xl border border-white/15 backdrop-blur-md shadow-lg">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>GLOBAL TOPOLOGY MATRIX // 6 HOPS ACTIVE</span>
-            </div>
+        {/* Col 1 & 2: SVG Interactive Node Topology Map (Reverted: Clean minimal glassmorphism without cheap glows or rotating beams) */}
+        <div className="lg:col-span-2 rounded-[24px] bg-[#05050a]/80 border border-white/10 hover:border-white/20 p-6 sm:p-8 overflow-hidden min-h-[460px] flex flex-col justify-between h-full backdrop-blur-xl transition-all duration-300 shadow-sm cursor-pointer group">
+          <div className="absolute top-4 left-6 z-10 flex items-center gap-3 text-xs font-mono text-zinc-400 bg-[#010103]/90 px-4 py-2 rounded-xl border border-white/15 backdrop-blur-md shadow-lg">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>GLOBAL TOPOLOGY MATRIX // 6 HOPS ACTIVE</span>
+          </div>
 
-            {/* SVG Viewport */}
-            <div className="relative w-full h-[360px] my-auto flex items-center justify-center">
-              <svg viewBox="0 0 1000 400" className="w-full h-full max-h-[380px] overflow-visible select-none">
-                <defs>
-                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.6" />
-                    <stop offset="100%" stopColor="#a855f7" stopOpacity="0.6" />
-                  </linearGradient>
-                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
+          {/* SVG Viewport */}
+          <div className="relative w-full h-[360px] my-auto flex items-center justify-center">
+            <svg viewBox="0 0 1000 400" className="w-full h-full max-h-[380px] overflow-visible select-none">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#a855f7" stopOpacity="0.6" />
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
 
-                {/* Connection Lines */}
-                {connections.map((conn, idx) => {
-                  const fromNode = nodes[conn.from];
-                  const toNode = nodes[conn.to];
-                  return (
-                    <g key={idx}>
-                      <line
-                        x1={fromNode.x}
-                        y1={fromNode.y}
-                        x2={toNode.x}
-                        y2={toNode.y}
-                        stroke="url(#lineGrad)"
-                        strokeWidth="2.5"
-                        strokeDasharray="6 6"
-                        className="transition-all duration-500"
+              {/* Connection Lines */}
+              {connections.map((conn, idx) => {
+                const fromNode = nodes[conn.from];
+                const toNode = nodes[conn.to];
+                return (
+                  <g key={idx}>
+                    <line
+                      x1={fromNode.x}
+                      y1={fromNode.y}
+                      x2={toNode.x}
+                      y2={toNode.y}
+                      stroke="url(#lineGrad)"
+                      strokeWidth="2.5"
+                      strokeDasharray="6 6"
+                      className="transition-all duration-500"
+                    />
+                    {/* Animated Data Packets */}
+                    <circle r="4.5" fill="#06b6d4" filter="url(#glow)">
+                      <animateMotion
+                        path={`M ${fromNode.x} ${fromNode.y} L ${toNode.x} ${toNode.y}`}
+                        dur={`${2 + (idx % 3)}s`}
+                        repeatCount="indefinite"
                       />
-                      {/* Animated Data Packets */}
-                      <circle r="4.5" fill="#06b6d4" filter="url(#glow)">
+                    </circle>
+                    {isSurging && (
+                      <circle r="6" fill="#ec4899" filter="url(#glow)">
                         <animateMotion
-                          path={`M ${fromNode.x} ${fromNode.y} L ${toNode.x} ${toNode.y}`}
-                          dur={`${2 + (idx % 3)}s`}
+                          path={`M ${toNode.x} ${toNode.y} L ${fromNode.x} ${fromNode.y}`}
+                          dur="0.8s"
                           repeatCount="indefinite"
                         />
                       </circle>
-                      {isSurging && (
-                        <circle r="6" fill="#ec4899" filter="url(#glow)">
-                          <animateMotion
-                            path={`M ${toNode.x} ${toNode.y} L ${fromNode.x} ${fromNode.y}`}
-                            dur="0.8s"
-                            repeatCount="indefinite"
-                          />
-                        </circle>
-                      )}
-                    </g>
-                  );
-                })}
+                    )}
+                  </g>
+                );
+              })}
 
-                {/* Nodes */}
-                {nodes.map((node) => {
-                  const isSelected = selectedNode === node.id;
-                  return (
-                    <g
-                      key={node.id}
-                      onClick={() => setSelectedNode(node.id)}
-                      className="cursor-pointer group/node"
-                      data-clickable="true"
-                    >
-                      {isSelected && (
-                        <circle
-                          cx={node.x}
-                          cy={node.y}
-                          r="32"
-                          fill="none"
-                          stroke="#06b6d4"
-                          strokeWidth="2.5"
-                          strokeDasharray="4 4"
-                          className="animate-spin"
-                          style={{ transformOrigin: `${node.x}px ${node.y}px`, animationDuration: "8s" }}
-                        />
-                      )}
+              {/* Nodes */}
+              {nodes.map((node) => {
+                const isSelected = selectedNode === node.id;
+                return (
+                  <g
+                    key={node.id}
+                    onClick={() => setSelectedNode(node.id)}
+                    className="cursor-pointer group/node"
+                    data-clickable="true"
+                  >
+                    {isSelected && (
                       <circle
                         cx={node.x}
                         cy={node.y}
-                        r="18"
-                        fill={isSelected ? "#06b6d4" : "#18181b"}
-                        stroke={isSelected ? "#fff" : "#a855f7"}
-                        strokeWidth="3.5"
-                        filter="url(#glow)"
-                        className="transition-all duration-300 group-hover/node:scale-125"
+                        r="32"
+                        fill="none"
+                        stroke="#06b6d4"
+                        strokeWidth="2.5"
+                        strokeDasharray="4 4"
+                        className="animate-spin"
+                        style={{ transformOrigin: `${node.x}px ${node.y}px`, animationDuration: "8s" }}
                       />
-                      <text
-                        x={node.x}
-                        y={node.y + 38}
-                        textAnchor="middle"
-                        fill={isSelected ? "#06b6d4" : "#f4f4f5"}
-                        fontSize="13"
-                        fontFamily="monospace"
-                        fontWeight="bold"
-                        className="tracking-wider select-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-                      >
-                        {node.name.split(" ")[0]}
-                      </text>
-                    </g>
-                  );
-                })}
-              </svg>
-            </div>
+                    )}
+                    <circle
+                      cx={node.x}
+                      cy={node.y}
+                      r="18"
+                      fill={isSelected ? "#06b6d4" : "#18181b"}
+                      stroke={isSelected ? "#fff" : "#a855f7"}
+                      strokeWidth="3.5"
+                      filter="url(#glow)"
+                      className="transition-all duration-300 group-hover/node:scale-125"
+                    />
+                    <text
+                      x={node.x}
+                      y={node.y + 38}
+                      textAnchor="middle"
+                      fill={isSelected ? "#06b6d4" : "#f4f4f5"}
+                      fontSize="13"
+                      fontFamily="monospace"
+                      fontWeight="bold"
+                      className="tracking-wider select-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+                    >
+                      {node.name.split(" ")[0]}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
 
-            <div className="flex items-center justify-between text-xs font-mono text-zinc-500 pt-4 border-t border-white/10">
-              <span>CLICK ANY NODE TO INSPECT LIVE TELEMETRY</span>
-              <span className="text-aether-cyan font-bold flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-aether-cyan animate-pulse" />
-                <span>TOTAL SURGE PACKETS: {surgeCount}</span>
-              </span>
-            </div>
+          <div className="flex items-center justify-between text-xs font-mono text-zinc-500 pt-4 border-t border-white/10">
+            <span>CLICK ANY NODE TO INSPECT LIVE TELEMETRY</span>
+            <span className="text-aether-cyan font-bold flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-aether-cyan animate-pulse" />
+              <span>TOTAL SURGE PACKETS: {surgeCount}</span>
+            </span>
           </div>
         </div>
 
-        {/* Col 3: Selected Node Deep Inspection Card (Reverted card hover to clean scale-105) */}
-        <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:shadow-[0_0_70px_rgba(6,182,212,0.8)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-80 animate-rotate-beam-reverse pointer-events-none" />
-          
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-2xl">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-aether-cyan uppercase font-bold tracking-widest">
-                  NODE TELEMETRY INSPECTOR
-                </span>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[10px] font-mono text-emerald-400 font-bold shadow-sm">
-                  {nodes[selectedNode].status}
-                </span>
-              </div>
-
-              <h3 className="text-2xl font-display font-extrabold text-white tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                {nodes[selectedNode].name}
-              </h3>
-
-              <div className="space-y-4 pt-2">
-                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2">
-                  <div className="flex justify-between text-xs font-mono text-zinc-400">
-                    <span>VRAM Saturation</span>
-                    <span className="text-white font-bold">{nodes[selectedNode].vram}</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
-                    <div className="bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500 h-full w-4/5 rounded-full shadow-[0_0_10px_#06b6d4]" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold">Latency</span>
-                    <div className="text-xl font-mono font-extrabold text-aether-cyan drop-shadow-[0_0_10px_#06b6d4]">{nodes[selectedNode].latency}</div>
-                  </div>
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold">Throughput</span>
-                    <div className="text-xl font-mono font-extrabold text-purple-400 drop-shadow-[0_0_10px_#a855f7]">{nodes[selectedNode].throughput}</div>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
-                  <span className="text-xs font-body text-zinc-400 font-bold">Allocated Agent Swarms</span>
-                  <span className="text-lg font-mono font-extrabold text-emerald-400">{nodes[selectedNode].swarms} Units</span>
-                </div>
-              </div>
+        {/* Col 3: Selected Node Deep Inspection Card (Reverted: Clean minimal glassmorphism without cheap glows or rotating beams) */}
+        <div className="rounded-[24px] bg-[#05050a]/80 border border-white/10 hover:border-white/20 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-xl transition-all duration-300 shadow-sm">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <span className="text-xs font-mono text-aether-cyan uppercase font-bold tracking-widest">
+                NODE TELEMETRY INSPECTOR
+              </span>
+              <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[10px] font-mono text-emerald-400 font-bold shadow-sm">
+                {nodes[selectedNode].status}
+              </span>
             </div>
 
-            {/* UPGRADED SCI-FI TACTICAL RECALIBRATE BUTTON */}
-            <div className="pt-4 border-t border-white/10">
-              <div className="relative overflow-hidden rounded-2xl p-[2px] shadow-[0_0_30px_rgba(6,182,212,0.8)] hover:shadow-[0_0_50px_rgba(168,85,247,0.9)] hover:scale-[1.02] active:scale-95 transition-all duration-300 group/btn cursor-pointer">
-                <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent animate-rotate-beam-fast pointer-events-none" />
-                
-                <button
-                  onClick={handleSurge}
-                  data-clickable="true"
-                  className="w-full relative z-10 py-4 px-6 rounded-[14px] bg-[#010103] group-hover/btn:bg-[#080816] transition-colors flex items-center justify-center gap-3 text-white font-display text-xs font-extrabold uppercase tracking-widest backdrop-blur-xl"
-                >
-                  <Zap className="h-4 w-4 text-aether-cyan fill-current animate-pulse" />
-                  <span className="bg-gradient-to-r from-white via-aether-cyan to-white bg-clip-text text-transparent">
-                    RECALIBRATE NODE WEIGHTS ⚡
-                  </span>
-                </button>
+            <h3 className="text-2xl font-display font-extrabold text-white tracking-tight">
+              {nodes[selectedNode].name}
+            </h3>
+
+            <div className="space-y-4 pt-2">
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2">
+                <div className="flex justify-between text-xs font-mono text-zinc-400">
+                  <span>VRAM Saturation</span>
+                  <span className="text-white font-bold">{nodes[selectedNode].vram}</span>
+                </div>
+                <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
+                  <div className="bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500 h-full w-4/5 rounded-full shadow-[0_0_10px_#06b6d4]" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1">
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold">Latency</span>
+                  <div className="text-xl font-mono font-extrabold text-aether-cyan">{nodes[selectedNode].latency}</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1">
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold">Throughput</span>
+                  <div className="text-xl font-mono font-extrabold text-purple-400">{nodes[selectedNode].throughput}</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-between">
+                <span className="text-xs font-body text-zinc-400 font-bold">Allocated Agent Swarms</span>
+                <span className="text-lg font-mono font-extrabold text-emerald-400">{nodes[selectedNode].swarms} Units</span>
               </div>
             </div>
+          </div>
+
+          {/* RECALIBRATE BUTTON (Clean minimal, no cheap glow box) */}
+          <div className="pt-4 border-t border-white/10">
+            <button
+              onClick={handleSurge}
+              data-clickable="true"
+              className="w-full py-4 px-6 rounded-[14px] bg-gradient-to-r from-aether-cyan via-purple-600 to-pink-600 hover:opacity-95 transition-opacity flex items-center justify-center gap-3 text-white font-display text-xs font-extrabold uppercase tracking-widest shadow-md"
+            >
+              <Zap className="h-4 w-4 text-white fill-current animate-pulse" />
+              <span>RECALIBRATE NODE WEIGHTS ⚡</span>
+            </button>
           </div>
         </div>
 
