@@ -49,96 +49,109 @@ export default function SwarmManager() {
           </p>
         </div>
 
-        {/* Global Stats Pill */}
-        <div className="flex items-center gap-6 bg-[#05050a]/80 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-xl shadow-sm">
-          <div className="space-y-0.5">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold block">Active Agents</span>
-            <span className="text-2xl font-mono font-extrabold text-emerald-400">3,040 Units</span>
-          </div>
-          <div className="h-8 w-px bg-white/10" />
-          <div className="space-y-0.5">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold block">Swarm Efficiency</span>
-            <span className="text-2xl font-mono font-extrabold text-aether-cyan">{globalEfficiency}%</span>
+        {/* Global Stats Pill (With Continuous 1px Traveling Border Line, Zero Glow!) */}
+        <div className="relative overflow-hidden rounded-2xl p-[1px] transition-all duration-300">
+          <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-emerald-500 via-aether-cyan to-transparent animate-rotate-beam pointer-events-none opacity-80" />
+          
+          <div className="relative z-10 bg-[#05050a] px-6 py-4 rounded-[15px] flex items-center gap-6">
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold block">Active Agents</span>
+              <span className="text-2xl font-mono font-extrabold text-emerald-400">3,040 Units</span>
+            </div>
+            <div className="h-8 w-px bg-white/10" />
+            <div className="space-y-0.5">
+              <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold block">Swarm Efficiency</span>
+              <span className="text-2xl font-mono font-extrabold text-aether-cyan">{globalEfficiency}%</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 2. Swarm Grid (Reverted: Clean minimal glassmorphism without cheap glows or rotating beams) */}
+      {/* 2. Swarm Grid (With Continuous 1px Traveling Border Line, Zero Glow!) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {swarms.map((swarm, idx) => {
           const isEngaged = swarm.status === "ENGAGED";
           return (
             <div
               key={swarm.id}
-              className="rounded-[24px] bg-[#05050a]/80 hover:bg-[#080812]/90 border border-white/10 hover:border-white/20 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] shadow-sm cursor-pointer group"
+              className="relative overflow-hidden rounded-[24px] p-[1px] transition-transform duration-300 hover:scale-[1.01] cursor-pointer group"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <div className="flex items-center gap-3">
-                  <div className={`w-3 h-3 rounded-full ${isEngaged ? "bg-emerald-400 animate-ping" : "bg-zinc-500"}`} />
-                  <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest">{swarm.id}</span>
+              {/* Continuous 1px Traveling Border Line (No Box-Shadow Glow!) */}
+              <div
+                className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-emerald-500 via-aether-cyan via-purple-500 to-transparent animate-rotate-beam pointer-events-none opacity-80"
+                style={{ animationDelay: `-${idx * 1.2}s` }}
+              />
+
+              <div className="relative z-10 rounded-[23px] bg-[#05050a] p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full">
+                
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-3 h-3 rounded-full ${isEngaged ? "bg-emerald-400 animate-ping" : "bg-zinc-500"}`} />
+                    <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest">{swarm.id}</span>
+                  </div>
+                  <button
+                    onClick={() => toggleStatus(swarm.id)}
+                    data-clickable="true"
+                    className={`px-3.5 py-1 rounded-full text-xs font-mono font-extrabold tracking-wider transition-all shadow-sm ${
+                      isEngaged
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500/30"
+                        : "bg-zinc-800 text-zinc-400 border border-zinc-700 hover:bg-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    ● {swarm.status}
+                  </button>
                 </div>
-                <button
-                  onClick={() => toggleStatus(swarm.id)}
-                  data-clickable="true"
-                  className={`px-3.5 py-1 rounded-full text-xs font-mono font-extrabold tracking-wider transition-all shadow-sm ${
-                    isEngaged
-                      ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500/30"
-                      : "bg-zinc-800 text-zinc-400 border border-zinc-700 hover:bg-zinc-700 hover:text-white"
-                  }`}
-                >
-                  ● {swarm.status}
-                </button>
+
+                {/* Swarm Info */}
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-display font-extrabold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                    {swarm.name}
+                  </h3>
+                  <div className="text-xs font-mono text-aether-cyan flex items-center gap-2">
+                    <Activity className="h-3.5 w-3.5" />
+                    <span>TASK: {swarm.task}</span>
+                  </div>
+                </div>
+
+                {/* Interactive Compute Slider */}
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
+                  <div className="flex justify-between text-xs font-mono">
+                    <span className="text-zinc-400 flex items-center gap-1.5 font-bold">
+                      <Sliders className="h-3.5 w-3.5 text-zinc-500" />
+                      <span>Compute Load Allocation</span>
+                    </span>
+                    <span className="text-white font-extrabold">{swarm.load}%</span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="5"
+                    max="100"
+                    value={swarm.load}
+                    onChange={(e) => handleSliderChange(swarm.id, Number(e.target.value))}
+                    className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 focus:outline-none"
+                  />
+
+                  <div className="flex justify-between text-[11px] font-mono text-zinc-500">
+                    <span>5% (Standby)</span>
+                    <span>100% (Overdrive)</span>
+                  </div>
+                </div>
+
+                {/* Footer Metrics */}
+                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                  <div>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold block">Allocated Units</span>
+                    <span className="text-lg font-mono font-extrabold text-white">{swarm.units} Agents</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold block">Swarm Efficiency</span>
+                    <span className="text-lg font-mono font-extrabold text-emerald-400">{swarm.efficiency}%</span>
+                  </div>
+                </div>
+
               </div>
-
-              {/* Swarm Info */}
-              <div className="space-y-2">
-                <h3 className="text-2xl font-display font-extrabold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
-                  {swarm.name}
-                </h3>
-                <div className="text-xs font-mono text-aether-cyan flex items-center gap-2">
-                  <Activity className="h-3.5 w-3.5" />
-                  <span>TASK: {swarm.task}</span>
-                </div>
-              </div>
-
-              {/* Interactive Compute Slider */}
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
-                <div className="flex justify-between text-xs font-mono">
-                  <span className="text-zinc-400 flex items-center gap-1.5 font-bold">
-                    <Sliders className="h-3.5 w-3.5 text-zinc-500" />
-                    <span>Compute Load Allocation</span>
-                  </span>
-                  <span className="text-white font-extrabold">{swarm.load}%</span>
-                </div>
-
-                <input
-                  type="range"
-                  min="5"
-                  max="100"
-                  value={swarm.load}
-                  onChange={(e) => handleSliderChange(swarm.id, Number(e.target.value))}
-                  className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 focus:outline-none"
-                />
-
-                <div className="flex justify-between text-[11px] font-mono text-zinc-500">
-                  <span>5% (Standby)</span>
-                  <span>100% (Overdrive)</span>
-                </div>
-              </div>
-
-              {/* Footer Metrics */}
-              <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
-                <div>
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold block">Allocated Units</span>
-                  <span className="text-lg font-mono font-extrabold text-white">{swarm.units} Agents</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase font-bold block">Swarm Efficiency</span>
-                  <span className="text-lg font-mono font-extrabold text-emerald-400">{swarm.efficiency}%</span>
-                </div>
-              </div>
-
             </div>
           );
         })}
