@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: #010103;
+    color: #f4f4f5;
+    overflow-x: hidden;
+    font-family: 'Outfit', sans-serif !important;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Space Grotesk', sans-serif !important;
+  }
+
+  .font-display {
+    font-family: 'Syne', sans-serif !important;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace !important;
+  }
+
+  @media (pointer: fine) {
+    body, body *, a, button, input, select, textarea {
+      cursor: none !important;
+    }
+  }
+}
+
+/* 0.000ms True Hardware Cursor Transitions (ZERO transform lag!) */
+.cursor-dot-instant {
+  transition: width 150ms ease, height 150ms ease, background-color 150ms ease, box-shadow 150ms ease !important;
+}
+
+.cursor-ring-instant {
+  transition: width 150ms ease-out, height 150ms ease-out, border-color 150ms ease, background-color 150ms ease, transform 0s !important;
+}
+
+/* Continuous Clockwise Moving Border Beam */
+@keyframes rotate-beam {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-beam-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-rotate-beam {
+  animation: rotate-beam 4s linear infinite;
+}
+
+.animate-rotate-beam-fast {
+  animation: rotate-beam 2.5s linear infinite;
+}
+
+.animate-rotate-beam-reverse {
+  animation: rotate-beam-reverse 5s linear infinite;
+}
+
+/* Animated Shimmering Text Gradient */
+@keyframes shimmer-text {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-shimmer-text {
+  background-size: 200% auto;
+  animation: shimmer-text 5s ease infinite;
+}
+
+/* Floating & Scanline Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 4s ease-in-out infinite;
+}
+
+/* Ultra-Premium Glassmorphism */
+.glass-card {
+  background: rgba(1, 1, 3, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #05050a;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
