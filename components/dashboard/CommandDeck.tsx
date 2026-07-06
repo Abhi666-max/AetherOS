@@ -56,8 +56,8 @@ export default function CommandDeck() {
       
       {/* 1. Natural Language Intent Execution Bar */}
       <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(6,182,212,0.2)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all duration-500 group">
-        {/* Clockwise Rotating Beam that accelerates on hover */}
-        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+        {/* Clockwise Rotating Beam */}
+        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
         
         <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 backdrop-blur-2xl space-y-6">
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -121,7 +121,7 @@ export default function CommandDeck() {
         </div>
       </div>
 
-      {/* 2. Real-Time KPI Telemetry Grid with Dynamic Hover Acceleration & Shift */}
+      {/* 2. Real-Time KPI Telemetry Grid (Reverted card hover to clean scale-105) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {kpis.map((kpi, idx) => {
           const Icon = kpi.icon;
@@ -130,13 +130,13 @@ export default function CommandDeck() {
               key={idx}
               className="relative overflow-hidden rounded-3xl p-[2px] shadow-lg hover:shadow-[0_0_50px_rgba(168,85,247,0.7)] hover:scale-105 transition-all duration-300 group cursor-pointer"
             >
-              {/* Clockwise Rotating Beam that accelerates on hover */}
+              {/* Clockwise Rotating Beam */}
               <div
-                className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-70 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300"
+                className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-70 animate-rotate-beam pointer-events-none"
                 style={{ animationDelay: `-${idx * 1.5}s` }}
               />
 
-              <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 flex flex-col justify-between space-y-4 h-full backdrop-blur-2xl">
+              <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 flex flex-col justify-between space-y-4 h-full backdrop-blur-2xl">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-extrabold">
                     {kpi.label}
@@ -170,7 +170,7 @@ export default function CommandDeck() {
 
       {/* 3. Live Neural Execution Stream Console */}
       <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-xl group">
-        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam pointer-events-none" />
+        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
         
         <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 backdrop-blur-2xl space-y-4">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">

@@ -63,7 +63,7 @@ export default function SwarmManager() {
         </div>
       </div>
 
-      {/* 2. Swarm Grid with Dynamic Hover Acceleration & Shift */}
+      {/* 2. Swarm Grid (Reverted card hover to clean scale-105) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {swarms.map((swarm, idx) => {
           const isEngaged = swarm.status === "ENGAGED";
@@ -72,13 +72,13 @@ export default function SwarmManager() {
               key={swarm.id}
               className="relative overflow-hidden rounded-3xl p-[2px] shadow-lg hover:shadow-[0_0_60px_rgba(16,185,129,0.7)] hover:scale-[1.02] transition-all duration-500 group cursor-pointer"
             >
-              {/* Clockwise Rotating Beam that accelerates on hover */}
+              {/* Clockwise Rotating Beam */}
               <div
-                className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-emerald-500 via-aether-cyan via-purple-500 to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300"
+                className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-emerald-500 via-aether-cyan via-purple-500 to-transparent opacity-80 animate-rotate-beam pointer-events-none"
                 style={{ animationDelay: `-${idx * 1.2}s` }}
               />
 
-              <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-2xl">
+              <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-2xl">
                 
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">

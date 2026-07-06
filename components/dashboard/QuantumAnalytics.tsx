@@ -52,11 +52,11 @@ export default function QuantumAnalytics() {
         </div>
       </div>
 
-      {/* 2. Interactive Enterprise Scale ROI Simulator with Dynamic Hover Acceleration & Shift */}
+      {/* 2. Interactive Enterprise Scale ROI Simulator (Reverted card hover to clean scale-105) */}
       <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(236,72,153,0.3)] hover:shadow-[0_0_70px_rgba(236,72,153,0.8)] transition-all duration-500 group cursor-pointer">
-        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-pink-500 via-purple-500 via-aether-cyan to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+        <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-pink-500 via-purple-500 via-aether-cyan to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
         
-        <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-8 sm:p-10 backdrop-blur-2xl space-y-8">
+        <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-8 sm:p-10 backdrop-blur-2xl space-y-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div className="space-y-1">
               <span className="text-xs font-mono text-pink-400 uppercase font-extrabold tracking-widest block">
@@ -140,14 +140,14 @@ export default function QuantumAnalytics() {
         </div>
       </div>
 
-      {/* 3. Bloomberg / Palantir Tier Animated Charts with Dynamic Hover Acceleration & Shift */}
+      {/* 3. Bloomberg / Palantir Tier Animated Charts (Reverted card hover to clean scale-105) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Chart 1: YoY Productivity Velocity */}
         <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-lg hover:shadow-[0_0_60px_rgba(168,85,247,0.7)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-pink-500 via-aether-cyan to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-pink-500 via-aether-cyan to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
           
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 sm:p-8 space-y-6 h-full backdrop-blur-2xl">
+          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 space-y-6 h-full backdrop-blur-2xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <span className="text-xs font-mono text-purple-400 uppercase font-extrabold tracking-wider">
                 YOY PRODUCTIVITY VELOCITY
@@ -195,9 +195,9 @@ export default function QuantumAnalytics() {
 
         {/* Chart 2: Sub-Millisecond Latency Reduction */}
         <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-lg hover:shadow-[0_0_60px_rgba(6,182,212,0.7)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam-reverse group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 to-transparent opacity-80 animate-rotate-beam-reverse pointer-events-none" />
           
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 sm:p-8 space-y-6 h-full backdrop-blur-2xl">
+          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 space-y-6 h-full backdrop-blur-2xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <span className="text-xs font-mono text-aether-cyan uppercase font-extrabold tracking-wider">
                 SUB-MILLISECOND LATENCY REDUCTION

@@ -67,11 +67,11 @@ export default function SpatialMesh() {
       {/* 2. Interactive SVG Map & Telemetry Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* Col 1 & 2: SVG Interactive Node Topology Map with Dynamic Hover Acceleration & Shift */}
+        {/* Col 1 & 2: SVG Interactive Node Topology Map (Reverted card hover to clean scale-105) */}
         <div className="lg:col-span-2 relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_70px_rgba(168,85,247,0.8)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan via-pink-500 to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-purple-500 via-aether-cyan via-pink-500 to-transparent opacity-80 animate-rotate-beam pointer-events-none" />
           
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 sm:p-8 overflow-hidden min-h-[460px] flex flex-col justify-between h-full backdrop-blur-2xl">
+          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 overflow-hidden min-h-[460px] flex flex-col justify-between h-full backdrop-blur-2xl">
             <div className="absolute top-4 left-6 z-10 flex items-center gap-3 text-xs font-mono text-zinc-400 bg-[#05050a]/90 px-4 py-2 rounded-xl border border-white/15 backdrop-blur-md shadow-lg">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
               <span>GLOBAL TOPOLOGY MATRIX // 6 HOPS ACTIVE</span>
@@ -189,11 +189,11 @@ export default function SpatialMesh() {
           </div>
         </div>
 
-        {/* Col 3: Selected Node Deep Inspection Card with Dynamic Hover Acceleration & Shift */}
+        {/* Col 3: Selected Node Deep Inspection Card (Reverted card hover to clean scale-105) */}
         <div className="relative overflow-hidden rounded-3xl p-[2px] shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:shadow-[0_0_70px_rgba(6,182,212,0.8)] transition-all duration-500 group cursor-pointer">
-          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-80 group-hover:opacity-100 animate-rotate-beam-reverse group-hover:animate-rotate-beam-fast pointer-events-none transition-all duration-300" />
+          <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-aether-cyan via-purple-500 via-pink-500 to-transparent opacity-80 animate-rotate-beam-reverse pointer-events-none" />
           
-          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 group-hover:bg-[#060614]/95 transition-colors duration-300 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-2xl">
+          <div className="relative z-10 rounded-[22px] bg-[#010103]/95 p-6 sm:p-8 flex flex-col justify-between space-y-6 h-full backdrop-blur-2xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-xs font-mono text-aether-cyan uppercase font-bold tracking-widest">
