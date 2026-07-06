@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Zap, Shield, Cpu } from "lucide-react";
+import { Sparkles, ArrowRight, Zap } from "lucide-react";
 
 interface LandingPageProps {
   onLaunch: () => void;
@@ -20,7 +20,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
         <span>Spacer</span>
       </div>
 
-      {/* CENTERSTAGE HERO CONTENT */}
+      {/* CENTERSTAGE HERO CONTENT (Clean, Minimal, Zero Latency Pills Removed!) */}
       <div className="relative z-10 flex flex-col items-center text-center my-auto max-w-5xl mx-auto space-y-10">
         
         {/* Status Badge */}
@@ -84,43 +84,13 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
           </div>
         </motion.div>
 
-        {/* Feature Highlights Pills */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl w-full text-left"
-        >
-          <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-            <Cpu className="h-5 w-5 text-aether-cyan shrink-0" />
-            <div>
-              <div className="text-xs font-mono font-bold text-white uppercase">0.000ms Hardware Cursor</div>
-              <div className="text-[11px] text-zinc-500 font-mono">Zero-latency raw GPU rendering</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-            <Shield className="h-5 w-5 text-purple-400 shrink-0" />
-            <div>
-              <div className="text-xs font-mono font-bold text-white uppercase">Zero-Trust Mesh</div>
-              <div className="text-[11px] text-zinc-500 font-mono">SHA-512 cryptographic verification</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-            <Sparkles className="h-5 w-5 text-emerald-400 shrink-0" />
-            <div>
-              <div className="text-xs font-mono font-bold text-white uppercase">3,040 AI Swarms</div>
-              <div className="text-[11px] text-zinc-500 font-mono">Autonomous cluster regulation</div>
-            </div>
-          </div>
-        </motion.div>
-
       </div>
 
-      {/* FOOTER: HIGH-LEGIBILITY FOUNDER & ARCHITECT SPOTLIGHT (With 1px Continuous Traveling Border Line, No Glow) */}
+      {/* FOOTER: SINGLE HIGH-LEGIBILITY FOUNDER SPOTLIGHT (With Real Social Links & 1px Traveling Border Line, No Glow) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
         className="relative z-10 w-full max-w-2xl mx-auto mt-16"
       >
         <div className="relative overflow-hidden rounded-2xl p-[1px] transition-all duration-300">
@@ -149,10 +119,10 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
               </div>
             </div>
 
-            {/* Right: Minimal Social Links (Clean Inline SVGs) */}
+            {/* Right: Real Social Links (Clean Inline SVGs with Authentic URLs) */}
             <div className="flex items-center gap-2">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/abhijeet-kangane/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white transition-all"
@@ -163,7 +133,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
                 </svg>
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/abhijeet_037"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white transition-all"
@@ -174,7 +144,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/abhijeet.037/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white transition-all"
@@ -185,7 +155,7 @@ export default function LandingPage({ onLaunch }: LandingPageProps) {
                 </svg>
               </a>
               <a
-                href="https://github.com/Abhi666-max/AetherOS"
+                href="https://github.com/abhi666-max"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white transition-all"

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/navbar/Header";
-import Footer from "@/components/footer/Footer";
 import LandingPage from "@/components/landing/LandingPage";
 import CommandDeck from "@/components/dashboard/CommandDeck";
 import SpatialMesh from "@/components/dashboard/SpatialMesh";
@@ -60,9 +59,6 @@ export default function Home() {
           )}
         </AnimatePresence>
       </main>
-
-      {/* Footer ONLY Renders on Landing Page! No Footer on Dashboard! */}
-      {currentView === "landing" && <Footer />}
       
     </div>
   );
