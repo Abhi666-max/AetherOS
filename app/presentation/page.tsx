@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Zap, ShieldCheck, Activity, BarChart3, Cpu, Network, ArrowRight, Printer, CheckCircle2, Globe, Terminal, Layers } from "lucide-react";
 import Link from "next/link";
 
@@ -21,6 +20,7 @@ export default function PresentationPage() {
         1. Forces exact 16:9 Widescreen dimensions (16in x 9in) so it never saves as square or Letter!
         2. -webkit-print-color-adjust: exact! Forces browser to print deep black backgrounds and vibrant gradients without stripping colors!
         3. Locks each slide to exactly 1 page with page-break-after: always!
+        4. STRIPS ALL ANIMATIONS, BLURS & DYNAMIC EFFECTS IN PRINT TO MAKE PDF SUPER LIGHTWEIGHT AND FAST SCROLLING!
       */}
       <style jsx global>{`
         @media print {
@@ -28,10 +28,17 @@ export default function PresentationPage() {
             size: 16in 9in !important;
             margin: 0mm !important;
           }
-          * {
+          *, *::before, *::after {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             color-adjust: exact !important;
+            animation: none !important;
+            transition: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
           }
           body, html {
             background-color: #010103 !important;
@@ -74,7 +81,7 @@ export default function PresentationPage() {
       `}</style>
 
       {/* 1. TOP CONTROL BAR (Hidden during printing!) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#05050a]/90 backdrop-blur-xl border-b border-white/10 px-6 py-4 flex items-center justify-between print-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#05050a]/90 border-b border-white/10 px-6 py-4 flex items-center justify-between print-hidden">
         <div className="flex items-center gap-4">
           <Link
             href="/"
@@ -84,7 +91,7 @@ export default function PresentationPage() {
           </Link>
           <div className="h-4 w-[1px] bg-white/20" />
           <span className="text-xs font-mono text-aether-cyan uppercase font-extrabold tracking-widest flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-aether-cyan animate-ping" />
+            <span className="h-2 w-2 rounded-full bg-aether-cyan" />
             <span>UNSTOP COMPETITION SUBMISSION // 6-SLIDE 16:9 WIDESCREEN DECK</span>
           </span>
         </div>
@@ -114,9 +121,9 @@ export default function PresentationPage() {
           <button
             onClick={handlePrint}
             data-clickable="true"
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500 text-white font-display text-xs font-extrabold uppercase tracking-widest shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500 text-white font-display text-xs font-extrabold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
           >
-            <Printer className="h-4 w-4 animate-bounce" />
+            <Printer className="h-4 w-4" />
             <span>🖨️ SAVE AS 16:9 PDF (WIDESCREEN)</span>
           </button>
         </div>
@@ -127,18 +134,17 @@ export default function PresentationPage() {
         
         {/* SLIDE 1: TITLE & EXECUTIVE OVERVIEW */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 0 ? "hidden print:flex" : "flex"
           }`}
         >
           {/* Subtle Cybernetic Grid */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-aether-cyan/10 via-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Header */}
           <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
-              <div className="h-3 w-3 rounded-full bg-aether-cyan animate-pulse" />
+              <div className="h-3 w-3 rounded-full bg-aether-cyan" />
               <span className="font-mono text-sm font-extrabold uppercase tracking-widest text-zinc-300">
                 FRONTEND BATTLE 2026 // BUILD THE NEXT BIG UI
               </span>
@@ -163,14 +169,14 @@ export default function PresentationPage() {
             </p>
           </div>
 
-          {/* Bottom Founder & Explicit PROTOTYPE LINKS Banner (Judges can click or read easily!) */}
+          {/* Bottom Founder & Explicit PROTOTYPE LINKS Banner */}
           <div className="relative z-10 w-full max-w-4xl mx-auto space-y-3">
             
             {/* EXPLICIT CLICKABLE VERCEL & GITHUB PROTOTYPE BOX */}
-            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-aether-cyan/15 via-purple-500/15 to-pink-500/15 border border-aether-cyan/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-aether-cyan/15 via-purple-500/15 to-pink-500/15 border border-aether-cyan/40 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-xl bg-aether-cyan/20 text-aether-cyan flex items-center justify-center">
-                  <Globe className="h-5 w-5 animate-pulse" />
+                  <Globe className="h-5 w-5" />
                 </div>
                 <div className="text-left">
                   <div className="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider">🌐 LIVE VERCEL PROTOTYPE (JUDGES CLICK HERE)</div>
@@ -199,8 +205,8 @@ export default function PresentationPage() {
             <div className="relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-aether-cyan via-purple-500 to-pink-500">
               <div className="rounded-[11px] bg-[#010103] px-6 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-aether-cyan via-purple-600 to-pink-600 flex items-center justify-center shadow-inner">
-                    <Sparkles className="h-5 w-5 text-white animate-pulse" />
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-aether-cyan via-purple-600 to-pink-600 flex items-center justify-center">
+                    <Sparkles className="h-5 w-5 text-white" />
                   </div>
                   <div className="text-left">
                     <div className="flex items-center gap-2">
@@ -224,7 +230,7 @@ export default function PresentationPage() {
 
         {/* SLIDE 2: PROBLEM STATEMENT */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 1 ? "hidden print:flex" : "flex"
           }`}
         >
@@ -291,7 +297,7 @@ export default function PresentationPage() {
 
         {/* SLIDE 3: PROPOSED SOLUTION */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 2 ? "hidden print:flex" : "flex"
           }`}
         >
@@ -335,11 +341,11 @@ export default function PresentationPage() {
 
             {/* Right 5 Cols: Live UI System Representation */}
             <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-aether-cyan via-purple-500 to-pink-500 shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-aether-cyan via-purple-500 to-pink-500">
                 <div className="rounded-[15px] bg-[#010103] p-5 space-y-3">
                   <div className="flex items-center justify-between border-b border-white/10 pb-2">
                     <span className="text-[11px] font-mono font-bold text-aether-cyan flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-aether-cyan animate-ping" />
+                      <span className="h-2 w-2 rounded-full bg-aether-cyan" />
                       <span>LIVE TELEMETRY FEED</span>
                     </span>
                     <span className="text-[10px] font-mono text-zinc-500">NODE: US-EAST-01</span>
@@ -379,7 +385,7 @@ export default function PresentationPage() {
 
         {/* SLIDE 4: TECH STACK & DESIGN ARCHITECTURE */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 3 ? "hidden print:flex" : "flex"
           }`}
         >
@@ -446,7 +452,7 @@ export default function PresentationPage() {
 
         {/* SLIDE 5: EXPECTED IMPACT & BUSINESS VALUE */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 4 ? "hidden print:flex" : "flex"
           }`}
         >
@@ -490,7 +496,7 @@ export default function PresentationPage() {
 
         {/* SLIDE 6: FUTURE SCOPE & ROADMAP */}
         <section
-          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 shadow-[0_20px_70px_rgba(0,0,0,0.8)] ${
+          className={`print-slide w-full aspect-video max-h-[85vh] bg-[#05050a] rounded-3xl p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border border-white/10 ${
             currentSlide !== 5 ? "hidden print:flex" : "flex"
           }`}
         >
@@ -548,7 +554,7 @@ export default function PresentationPage() {
           {/* EXPLICIT SUBMISSION PROTOTYPE LINKS AT THE BOTTOM OF SLIDE 6 */}
           <div className="relative z-10 p-3 rounded-xl bg-gradient-to-r from-aether-cyan/10 via-purple-500/10 to-pink-500/10 border border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4 text-aether-cyan animate-pulse" />
+              <Globe className="h-4 w-4 text-aether-cyan" />
               <span className="font-mono text-xs font-extrabold text-white">Live Vercel: <a href="https://aether-os-ruby.vercel.app/" target="_blank" rel="noreferrer" className="text-aether-cyan hover:underline">https://aether-os-ruby.vercel.app</a></span>
             </div>
             <div className="flex items-center gap-2">
