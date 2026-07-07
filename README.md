@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌌 AETHER OS
+# 🌌 AETHEROS
 ### *The Autonomous Spatial AI Operating System*
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
